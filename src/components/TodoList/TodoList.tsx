@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux';
-import style from "./TodoList.module.css";
+import style from "./TodoList.module.scss";
 import { TodoType,sliceType } from '../../types/todos';
 import {MdOutlineDeleteOutline} from "react-icons/md";
 import { deleteTodo } from '../../store/slices/todoSlice';

@@ -3,18 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState:StateType = {
-   todos: [
-      {
-         id: 0,
-         checked: false,
-         todo : "Coding"
-      },
-      {
-         id: 1,
-         checked: false,
-         todo : "Cooking"
-      }
-   ]
+   todos: []
 }
 
 
