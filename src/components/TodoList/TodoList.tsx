@@ -3,6 +3,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import style from "./TodoList.module.scss";
 import { TodoType,sliceType } from '../../types/todos';
 import {MdOutlineDeleteOutline} from "react-icons/md";
+import {BiRefresh} from "react-icons/bi";
 import { deleteTodo } from '../../store/slices/todoSlice';
 
 const TodoList = () => {
@@ -14,6 +15,8 @@ const TodoList = () => {
       dispatch(deleteTodo(id))
    }
 
+
+
   return (
    <section className={style.sections}>
       <ul>
@@ -24,7 +27,10 @@ const TodoList = () => {
                      <input type="checkbox" className={style.check} />
                      <li>{item.todo}</li>
                   </div>
-                  <button onClick={() => handleDelete(item.id)} className={style.buttons}><MdOutlineDeleteOutline/></button>
+                  <div>
+                     <button onClick={() => console.log("test")} className={style.buttons}><BiRefresh/></button>
+                     <button onClick={() => handleDelete(item.id)} className={style.buttons}><MdOutlineDeleteOutline/></button>
+                  </div>
                </div>
             ))
          }

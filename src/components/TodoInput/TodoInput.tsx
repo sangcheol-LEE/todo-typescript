@@ -5,7 +5,7 @@ import { addTodo } from '../../store/slices/todoSlice';
 import { TodoType } from '../../types/todos';
 
 const TodoInput = () => {
-   const numRef = useRef(2)
+   const numRef = useRef(0)
    const [todos, setTodos] = useState<TodoType>({
       id: 0,
       checked: false,
@@ -16,13 +16,13 @@ const TodoInput = () => {
    const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
       setTodos((prev)=> ({
          ...prev,
-         todo: e.target.value.trim()
+         todo: e.target.value
       }))
    }
 
    const handleSubmit = (e:React.ChangeEvent<HTMLFormElement>) => {
       e.preventDefault()
-      if(todos.todo.length === 0) return;
+      if(todos.todo.trim().length === 0) return;
       dispatch(addTodo(todos))
       setTodos((prev) => ({
          ...prev,
