@@ -4,7 +4,7 @@ import style from "./TodoList.module.scss";
 import { TodoType,sliceType } from '../../types/todos';
 import {MdOutlineDeleteOutline} from "react-icons/md";
 import {BiRefresh} from "react-icons/bi";
-import { deleteTodo } from '../../store/slices/todoSlice';
+import { deleteTodo,changeTodo } from '../../store/slices/todoSlice';
 
 const TodoList = () => {
    const state = useSelector((state:sliceType) => state.todo)
@@ -13,6 +13,12 @@ const TodoList = () => {
 
    const handleDelete = (id:number) => {
       dispatch(deleteTodo(id))
+   }
+
+   const handleChangeTodo = (id:number) => {
+      const text = prompt("투두를 변경해주세요")
+      const payload = ({text, id})
+      dispatch(changeTodo(payload))
    }
 
 
@@ -28,7 +34,7 @@ const TodoList = () => {
                      <li>{item.todo}</li>
                   </div>
                   <div>
-                     <button onClick={() => console.log("test")} className={style.buttons}><BiRefresh/></button>
+                     <button onClick={() => handleChangeTodo(item.id)} className={style.buttons}><BiRefresh/></button>
                      <button onClick={() => handleDelete(item.id)} className={style.buttons}><MdOutlineDeleteOutline/></button>
                   </div>
                </div>
