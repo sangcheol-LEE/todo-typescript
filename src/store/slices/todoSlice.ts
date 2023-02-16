@@ -1,4 +1,4 @@
-import { StateType, TodoType } from './../../types/todos';
+import { StateType, TodoType,PayloadType } from './../../types/todos';
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit';
 
@@ -11,27 +11,23 @@ export const todoSlice = createSlice({
    name : "todoCounter",
    initialState,
    reducers : {
-      addTodo : (state, action: PayloadAction<TodoType>) => {
-         const prev = {
-            ...state,
-            todos: state.todos.concat(action.payload)
-         }
-         return prev
-      },
-      deleteTodo: (state, action) => {
-         const prev = {
-            ...state,
-            todos: state.todos.filter((item) => item.id !== action.payload)
-         }
-         return prev
-      },
-      changeTodo : (state, action) => {
-         const prev = {
-            ...state,
-            todos: state.todos
+      addTodo : (state, action: PayloadAction<TodoType>) => ({
+         todos: state.todos.concat(action.payload)
+      }),
+      deleteTodo: (state, action) => ({
+         todos: state.todos.filter((item) => item.id !== action.payload)
+      }),
+      changeTodo : (state:any, action:PayloadAction<PayloadType>) => {
+         state.todos.map((item:TodoType) => {
+               if(item.todo !== undefined || item.todo !== null) {
+                  if(item.id === action?.payload?.id) {
+                     item.todo = action.payload?.todo
+                  }
+               }
+               return state
+            })
          }
       }
-   }
 })
 
 export const {addTodo, deleteTodo,changeTodo} = todoSlice.actions

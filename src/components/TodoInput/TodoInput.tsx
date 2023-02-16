@@ -22,7 +22,8 @@ const TodoInput = () => {
 
    const handleSubmit = (e:React.ChangeEvent<HTMLFormElement>) => {
       e.preventDefault()
-      if(todos.todo.trim().length === 0) return;
+
+      if(todos.todo?.trim().length === 0) return;
       dispatch(addTodo(todos))
       setTodos((prev) => ({
          ...prev,

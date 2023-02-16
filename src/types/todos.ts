@@ -10,5 +10,10 @@ export interface sliceType {
 export interface TodoType {
    id : number;
    checked ?: boolean;
-   todo: string;
+   todo?: string;
+}
+
+export interface PayloadType {
+   todo : string;
+   id: number
 }

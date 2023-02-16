@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux';
 import style from "./TodoList.module.scss";
-import { TodoType,sliceType } from '../../types/todos';
+import { TodoType,sliceType,PayloadType } from '../../types/todos';
 import {MdOutlineDeleteOutline} from "react-icons/md";
 import {BiRefresh} from "react-icons/bi";
-import { deleteTodo,changeTodo } from '../../store/slices/todoSlice';
+import { deleteTodo,changeTodo} from '../../store/slices/todoSlice';
 
 const TodoList = () => {
    const state = useSelector((state:sliceType) => state.todo)
@@ -16,9 +16,11 @@ const TodoList = () => {
    }
 
    const handleChangeTodo = (id:number) => {
-      const text = prompt("투두를 변경해주세요")
-      const payload = ({text, id})
-      dispatch(changeTodo(payload))
+      const todo = prompt("투두를 변경해주세요")
+      if(todo !== null) {
+         const payload:PayloadType = {todo, id}
+         dispatch(changeTodo(payload))
+      }
    }
 
 
