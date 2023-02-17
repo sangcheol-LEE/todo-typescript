@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState:StateType = {
-   todos: []
+   todos: [],
 }
 
 
@@ -12,7 +12,7 @@ export const todoSlice = createSlice({
    initialState,
    reducers : {
       addTodo : (state, action: PayloadAction<TodoType>) => ({
-         todos: state.todos.concat(action.payload)
+         todos: state.todos.concat(action.payload),
       }),
       deleteTodo: (state, action) => ({
          todos: state.todos.filter((item) => item.id !== action.payload)
@@ -26,11 +26,29 @@ export const todoSlice = createSlice({
                }
                return state
             })
-         }
-      }
+      },
+      handleChecked: (state, action) => {
+         state.todos.map((item: TodoType) => {
+            if(item.id === action.payload) {
+               item.checked = !item.checked
+            }
+            return state
+         })
+      },
+      filteredAll : (state) => ({
+         ...state
+      }),
+      filteredActive : (state) => ({
+         ...state,
+         todos: state.todos.filter((item) => !item.checked)
+      }),
+      filteredCompleted : (state) => ({
+         todos : state.todos.filter((item) => item.checked)
+      })
+   },
 })
 
-export const {addTodo, deleteTodo,changeTodo} = todoSlice.actions
+export const {addTodo, deleteTodo,changeTodo,handleChecked,filteredAll,filteredActive} = todoSlice.actions
 
 export default todoSlice.reducer
 

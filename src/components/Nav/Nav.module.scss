@@ -1,0 +1,9 @@
+.button_box {
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   width: 100%;
+   :nth-child(2){
+      margin: 0 10px;
+   }
+}

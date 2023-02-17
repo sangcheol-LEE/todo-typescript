@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import style from "./TodoList.module.scss";
 import { TodoType,sliceType,PayloadType } from '../../types/todos';
 import {MdOutlineDeleteOutline} from "react-icons/md";
 import {BiRefresh} from "react-icons/bi";
-import { deleteTodo,changeTodo} from '../../store/slices/todoSlice';
+import { deleteTodo,changeTodo,handleChecked} from '../../store/slices/todoSlice';
+import CN from "classnames";
 
 const TodoList = () => {
    const state = useSelector((state:sliceType) => state.todo)
    const dispatch = useDispatch()
-   console.log("statetet",state)
 
    const handleDelete = (id:number) => {
       dispatch(deleteTodo(id))
@@ -24,7 +24,6 @@ const TodoList = () => {
    }
 
 
-
   return (
    <section className={style.sections}>
       <ul>
@@ -32,8 +31,8 @@ const TodoList = () => {
             state.todos?.map((item:TodoType) => (
                <div className={style.listBox} key={item.id}>
                   <div className={style.lists}>
-                     <input type="checkbox" className={style.check} />
-                     <li>{item.todo}</li>
+                     <input type="checkbox" onChange={() => dispatch(handleChecked(item.id))} className={style.check} />
+                     <li className={CN(item.checked ? style.list : "")}>{item.todo}</li>
                   </div>
                   <div>
                      <button onClick={() => handleChangeTodo(item.id)} className={style.buttons}><BiRefresh/></button>

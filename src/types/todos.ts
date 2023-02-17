@@ -1,6 +1,7 @@
 export interface StateType {
-   todos: TodoType[]
+   todos: TodoType[],
 }
+
 
 export interface sliceType {
    todo : StateType
