@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useCallback} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import style from "./TodoList.module.scss";
 import { TodoType,sliceType,PayloadType } from '../../types/todos';
@@ -15,13 +15,13 @@ const TodoList = () => {
       dispatch(deleteTodo(id))
    }
 
-   const handleChangeTodo = (id:number) => {
+   const handleChangeTodo = useCallback((id:number) => {
       const todo = prompt("투두를 변경해주세요")
       if(todo !== null) {
          const payload:PayloadType = {todo, id}
          dispatch(changeTodo(payload))
       }
-   }
+   },[dispatch])
 
 
   return (

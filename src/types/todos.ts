@@ -18,3 +18,10 @@ export interface PayloadType {
    todo : string;
    id: number
 }
+
+
+export interface memoType {
+   main : TodoType[]
+   active : TodoType[]
+   complete : TodoType[]
+}

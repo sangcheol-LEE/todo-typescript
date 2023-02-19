@@ -1,4 +1,4 @@
-import { StateType, TodoType,PayloadType } from './../../types/todos';
+import { StateType, TodoType,PayloadType, sliceType } from './../../types/todos';
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from '@reduxjs/toolkit';
 
@@ -35,20 +35,20 @@ export const todoSlice = createSlice({
             return state
          })
       },
-      filteredAll : (state) => ({
-         ...state
+      filteredAll : (state,action) => ({
+         todos: state.todos
       }),
-      filteredActive : (state) => ({
-         ...state,
-         todos: state.todos.filter((item) => !item.checked)
-      }),
-      filteredCompleted : (state) => ({
-         todos : state.todos.filter((item) => item.checked)
-      })
+      filteredActive : (state,action) => {
+
+      },
+      filteredCompleted : (state,action) => {
+         const newData = action.payload;
+         return newData.filter((item:TodoType) => item.checked)
+      }
    },
 })
 
-export const {addTodo, deleteTodo,changeTodo,handleChecked,filteredAll,filteredActive} = todoSlice.actions
+export const {addTodo, deleteTodo,changeTodo,handleChecked,filteredAll,filteredActive,filteredCompleted} = todoSlice.actions
 
 export default todoSlice.reducer
 
