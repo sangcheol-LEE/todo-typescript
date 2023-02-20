@@ -1,32 +1,25 @@
-import React,{useMemo} from 'react'
+import React,{useCallback} from 'react'
 import style from "./Nav.module.scss";
 import { useDispatch,useSelector } from 'react-redux';
-import {filteredAll,filteredActive,filteredCompleted} from "../../store/slices/todoSlice";
-import {sliceType,memoType} from "../../types/todos";
-
+import {sliceType,} from "../../types/todos";
+import {filteredChecked} from "../../store/slices/todoSlice";
 
 const Nav = () => {
   const dispatch = useDispatch();
-  const data = useSelector((state:sliceType) => state?.todo?.todos)
-  const newData:memoType = useMemo(() => {
-    const ret = {
-      main : [],
-      active : [],
-      complete : []
-    }
-    if(data) {
+  const data = useSelector((state:sliceType) => state.todo)
 
-    }
-    return ret
-  },[data])
+  const getNewData = useCallback((str: string) => {
+    dispatch(filteredChecked(str))
+  },[dispatch,data])
 
-  console.log("newData",newData)
+  console.log(data)
+
 
   return (
     <div className={style.button_box}>
-      <button onClick={() => dispatch(filteredAll(data))}>ALL</button>
-      <button onClick={() => dispatch(filteredActive(newData))}>Active</button>
-      <button onClick={() => dispatch(filteredCompleted(newData))}>Completed</button>
+      <button onClick={() =>  getNewData("all")}>ALL</button>
+      <button onClick={() => getNewData("active")}>Active</button>
+      <button onClick={() => getNewData("complete")}>Completed</button>
 
     </div>
   )

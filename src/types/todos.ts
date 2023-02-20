@@ -1,5 +1,6 @@
 export interface StateType {
    todos: TodoType[],
+   filteredTodos: TodoType[]
 }
 
 

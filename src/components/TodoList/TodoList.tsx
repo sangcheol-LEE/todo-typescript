@@ -28,11 +28,11 @@ const TodoList = () => {
    <section className={style.sections}>
       <ul>
          {
-            state.todos?.map((item:TodoType) => (
+            state.filteredTodos?.map((item:TodoType) => (
                <div className={style.listBox} key={item.id}>
                   <div className={style.lists}>
                      <input type="checkbox" onChange={() => dispatch(handleChecked(item.id))} className={style.check} />
-                     <li className={CN(item.checked ? style.list : "")}>{item.todo}</li>
+                     <li className={CN(item?.checked ? style.list : "")}>{item.todo}</li>
                   </div>
                   <div>
                      <button onClick={() => handleChangeTodo(item.id)} className={style.buttons}><BiRefresh/></button>
