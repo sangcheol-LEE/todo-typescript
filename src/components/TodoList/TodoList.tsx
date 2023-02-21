@@ -26,7 +26,7 @@ const TodoList = () => {
 
   return (
    <section className={style.sections}>
-      <ul>
+      <ul className={style.list}>
          {
             state.filteredTodos?.map((item:TodoType) => (
                <div className={style.listBox} key={item.id}>

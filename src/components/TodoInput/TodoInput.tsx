@@ -35,8 +35,8 @@ const TodoInput = () => {
 
    }
   return (
-    <form onSubmit={handleSubmit}>
-       <input type="text" value={todos.todo} placeholder="Add Todo" onChange={handleChange}/>
+    <form onSubmit={handleSubmit} className={style.form}>
+       <input className={style.inputs} type="text" value={todos.todo} placeholder="Add Todo" onChange={handleChange}/>
        <button className={style.formButton}>ADD</button>
     </form>
   )
