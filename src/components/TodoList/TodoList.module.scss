@@ -1,5 +1,8 @@
+@use "../../App.module.scss" as mixin;
+
 .sections{
    height:100%;
+   min-height: 0;
    display: flex;
    flex-direction: column;
    background-color: var(--color-bg);
@@ -8,24 +11,47 @@
 .list {
    flex : 1 1 auto;
    overflow-y: auto;
-}
+   .listBox {
+      @include mixin.flexbetween;
+      padding: 0.5rem 1rem;
+      margin: 0.1rem 0;
+      color:var(--color-text);
+      .lists {
+         .check{
+            width: 1.5rem;
+            height: 1.5rem;
+         }
+      }
+      .text {
+         flex : 1 1 0%;
+         margin-left: 0.5rem;
+         font-size: 1.5rem;
+      };
 
-.listBox {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-
-}
-.check{
-   margin-right: 10px;
-}
-.lists{
-   display: flex;
-   .list{
-      text-decoration: line-through;
+      .icon_box {
+         display: flex;
+         .icon{
+            width: 26px;
+            height: 26px;
+            background-color: var(--color-grey);
+            border-radius: 100%;
+            @include mixin.flexcenter;
+            transition: all 150ms ease-out;
+            &:first-child {
+               margin-right: 0.5rem;
+            }
+            &:hover{
+               background-color : var(--color-accent);
+               transform: retate(150deg) scale(1.2);
+            }
+            .buttons {
+               @include mixin.flexcenter;
+               font-size: 1rem;
+               color : var(--color-text);
+               background-color: transparent;
+            }
+         }
+      }
    }
 }
 
-.buttons{
-   font-size: 15px;
-}

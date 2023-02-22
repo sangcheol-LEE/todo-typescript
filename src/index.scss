@@ -6,6 +6,7 @@
    --color-text: #22243b;
    --color-accent : #f16e03;
    --color-white: #fff;
+   --color-scrollbar : #aaa7a7;
 }
 
 * {
@@ -26,6 +27,7 @@ body {
    justify-content: center;
    align-items: center;
    background: rgb(81, 87, 111);
+   accent-color : var(--color-accent);
    background: linear-gradient(
       106deg,
       rgba(81,87,111,1) 0%,
@@ -48,3 +50,19 @@ body,th,td,input,select,textarea,button {font-size:10px;line-height:1.5;font-fam
 a {color:#333;text-decoration:none}
 a:active, a:hover {text-decoration:underline}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
+
+::-webkit-scrollbar {
+   width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+   background-color: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+   background-color: var(--color-scrollbar);
+   &:hover {
+      background-color: var(--color-accent);
+   }
+}
+

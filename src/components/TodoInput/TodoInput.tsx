@@ -30,8 +30,8 @@ const TodoInput = () => {
          id:numRef.current,
          todo : ""
       }))
-      dispatch(filteredChecked("all"))
       numRef.current += 1
+      dispatch(filteredChecked("all"))
 
    }
   return (

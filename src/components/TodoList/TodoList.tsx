@@ -4,7 +4,7 @@ import style from "./TodoList.module.scss";
 import { TodoType,sliceType,PayloadType } from '../../types/todos';
 import {MdOutlineDeleteOutline} from "react-icons/md";
 import {BiRefresh} from "react-icons/bi";
-import { deleteTodo,changeTodo,handleChecked} from '../../store/slices/todoSlice';
+import { deleteTodo,changeTodo,handleChecked,filteredChecked} from '../../store/slices/todoSlice';
 import CN from "classnames";
 
 const TodoList = () => {
@@ -20,6 +20,8 @@ const TodoList = () => {
       if(todo !== null) {
          const payload:PayloadType = {todo, id}
          dispatch(changeTodo(payload))
+         dispatch(filteredChecked("all"))
+
       }
    },[dispatch])
 
@@ -29,16 +31,24 @@ const TodoList = () => {
       <ul className={style.list}>
          {
             state.filteredTodos?.map((item:TodoType) => (
-               <div className={style.listBox} key={item.id}>
+               <li className={style.listBox} key={item.id}>
                   <div className={style.lists}>
                      <input type="checkbox" onChange={() => dispatch(handleChecked(item.id))} className={style.check} />
-                     <li className={CN(item?.checked ? style.list : "")}>{item.todo}</li>
                   </div>
-                  <div>
-                     <button onClick={() => handleChangeTodo(item.id)} className={style.buttons}><BiRefresh/></button>
-                     <button onClick={() => handleDelete(item.id)} className={style.buttons}><MdOutlineDeleteOutline/></button>
+                     <div className={CN(style.text ,item.checked ? style.list : "")}>{item.todo}</div>
+                  <div className={style.icon_box}>
+                     <div className={style.icon}>
+                        <button onClick={() => handleChangeTodo(item.id)} className={style.buttons}>
+                           <BiRefresh/>
+                        </button>
+                     </div>
+                     <span className={style.icon}>
+                        <button onClick={() => handleDelete(item.id)} className={style.buttons}>
+                           <MdOutlineDeleteOutline/>
+                        </button>
+                     </span>
                   </div>
-               </div>
+               </li>
             ))
          }
       </ul>
