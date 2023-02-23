@@ -9,6 +9,8 @@ import CN from "classnames";
 
 const TodoList = () => {
    const state = useSelector((state:sliceType) => state.todo)
+   const isDarkMode = useSelector((state:sliceType) => state.todo.isDarkMode)
+
    const dispatch = useDispatch()
 
    const handleDelete = (id:number) => {
@@ -27,7 +29,7 @@ const TodoList = () => {
 
 
   return (
-   <section className={style.sections}>
+   <section className={CN(style.sections, {[style.dark] : isDarkMode} )}>
       <ul className={style.list}>
          {
             state.filteredTodos?.map((item:TodoType) => (

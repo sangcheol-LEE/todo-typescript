@@ -4,7 +4,8 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 const initialState:StateType = {
    todos: [],
-   filteredTodos:[]
+   filteredTodos:[],
+   isDarkMode:false
 }
 
 
@@ -13,9 +14,6 @@ export const todoSlice = createSlice({
    initialState,
    reducers : {
       addTodo : (state, action: PayloadAction<TodoType>) => {
-         const newTodo = {
-            id : action.payload
-         }
          state.todos = state.todos.concat(action.payload)
       },
       deleteTodo: (state, action) => {
@@ -55,11 +53,15 @@ export const todoSlice = createSlice({
                state.filteredTodos = state.todos;
                break;
          }
+      },
+      getDarkMode : (state) => {
+         state.isDarkMode = !state.isDarkMode
+         return state
       }
    },
 })
 
-export const {addTodo, deleteTodo,changeTodo,handleChecked,filteredChecked} = todoSlice.actions
+export const {addTodo, deleteTodo,changeTodo,getDarkMode,handleChecked,filteredChecked} = todoSlice.actions
 
 export default todoSlice.reducer
 

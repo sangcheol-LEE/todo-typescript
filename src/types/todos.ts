@@ -1,6 +1,7 @@
 export interface StateType {
-   todos: TodoType[],
-   filteredTodos: TodoType[]
+   todos: TodoType[];
+   filteredTodos: TodoType[];
+   isDarkMode : boolean
 }
 
 
