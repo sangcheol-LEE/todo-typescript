@@ -32,8 +32,10 @@ const TodoInput = () => {
       }))
       numRef.current += 1
       dispatch(filteredChecked("all"))
-
    }
+
+
+
   return (
     <form onSubmit={handleSubmit} className={style.form}>
        <input className={style.inputs} type="text" value={todos.todo} placeholder="Add Todo" onChange={handleChange}/>

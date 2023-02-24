@@ -15,7 +15,6 @@ const Nav = () => {
     dispatch(filteredChecked(str))
   },[dispatch,data])
 
-  console.log("darkMode",darkMode)
 
 
   return (
