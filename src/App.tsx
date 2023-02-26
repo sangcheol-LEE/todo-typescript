@@ -5,6 +5,7 @@ import Nav from './components/Nav/Nav';
 import { useSelector,useDispatch } from 'react-redux';
 import {sliceType,} from "./types/todos";
 import { addTodo } from './store/slices/todoSlice';
+import Flex from './Flex';
 
 const App = () => {
   const state = useSelector((state: sliceType) => state.todo.filteredTodos)
@@ -13,11 +14,12 @@ const App = () => {
     localStorage.setItem("todos",JSON.stringify(state))
   },[state])
   return (
-    <>
-      <Nav />
-      <TodoList />
-      <TodoInput/>
-    </>
+    <Flex />
+    // <>
+    //   <Nav />
+    //   <TodoList />
+    //   <TodoInput/>
+    // </>
   )
 }
 

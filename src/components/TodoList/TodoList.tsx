@@ -29,7 +29,8 @@ const TodoList = () => {
 
 
   return (
-   <section className={CN(style.sections, {[style.dark] : isDarkMode} )}>
+   <section className={CN(style.sections, {[style.dark]
+    : isDarkMode} )}>
       <ul className={style.list}>
          {
             state.filteredTodos?.map((item:TodoType) => (
