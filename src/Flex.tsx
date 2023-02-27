@@ -5,8 +5,8 @@ const Flex = () => {
   return (
     <div className={style.wrap}>
        <div className={style.container}>
-          <div className={style.name}>디바이스 닉네임</div>
-          <div className={style.box}>
+         <div className={style.name}>디바이스 닉네임</div>
+         <div className={style.box}>
             <img className={style.image} src={pencil} alt="logo"/>
             <p>texttexttexttexttexttexttexttexttext<br /> texttexttexttexttexttexttexttexttext</p>
          </div>
