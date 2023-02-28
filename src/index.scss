@@ -22,29 +22,29 @@ button {border:0 none;background-color:transparent;cursor:pointer}
 body {
    width: 100vw;
    height: 100vh;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   background: rgb(81, 87, 111);
-   accent-color : var(--color-accent);
-   background: linear-gradient(
-      106deg,
-      rgba(81,87,111,1) 0%,
-      rgba(60,61,69,1)100%
-   );
-   #root {
-      width : 100%;
-      height: 60%;
-      max-width: 500px;
-      background-color: var(--color-bg-dark);
-      overflow:hidden;
-      border-radius: 1rem;
-      display: flex;
-      flex-direction: column;
-      -webkit-box-shadow: 5px 5px 21px 4px rgba(0,0,0,0.45);
-      box-shadow: 5px 5px 21px 4px rgba(0,0,0,0.45);
-   }
+   // display: flex;
+   // flex-direction: column;
+   // justify-content: center;
+   // align-items: center;
+   // background: rgb(81, 87, 111);
+   // accent-color : var(--color-accent);
+   // background: linear-gradient(
+   //    106deg,
+   //    rgba(81,87,111,1) 0%,
+   //    rgba(60,61,69,1)100%
+   // );
+   // #root {
+   //    width : 100%;
+   //    height: 60%;
+   //    max-width: 500px;
+   //    background-color: var(--color-bg-dark);
+   //    overflow:hidden;
+   //    border-radius: 1rem;
+   //    display: flex;
+   //    flex-direction: column;
+   //    -webkit-box-shadow: 5px 5px 21px 4px rgba(0,0,0,0.45);
+   //    box-shadow: 5px 5px 21px 4px rgba(0,0,0,0.45);
+   // }
 }
 body,th,td,input,select,textarea,button {font-size:10px;line-height:1.5;font-family:'돋움',dotum,sans-serif;color:#333} /* color값은 디자인가이드에 맞게사용 */
 a {color:#333;text-decoration:none}

@@ -1,30 +1,36 @@
-import React,{useEffect} from 'react'
-import TodoInput from './components/TodoInput/TodoInput';
-import TodoList from './components/TodoList/TodoList';
-import Nav from './components/Nav/Nav';
-import { useSelector,useDispatch } from 'react-redux';
-import {sliceType,} from "./types/todos";
-import { addTodo } from './store/slices/todoSlice';
-import Flex from './Flex';
+import React from 'react';
+import ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Home from './pages/Home';
+import Videos from './pages/Videos';
+import NotFound  from './pages/NotFound';
+import Root from './pages/Root';
+import VideoDetail from './pages/VideoDetail';
+
+const router = createBrowserRouter([
+  {
+    path : "/",
+    element: <Root />,
+    errorElement: <NotFound/>,
+    children: [
+      {index: true, element: <Home />},
+      {path: "/videos", element: <Videos />},
+      {path: "/videos/:videoId", element: <VideoDetail />}
+
+    ]
+  }
+]);
+
 
 const App = () => {
-  const state = useSelector((state: sliceType) => state.todo.filteredTodos)
-  const dispatch = useDispatch();
-  useEffect(() => {
-    localStorage.setItem("todos",JSON.stringify(state))
-  },[state])
-  return (
-    <Flex />
-    // <>
-    //   <Nav />
-    //   <TodoList />
-    //   <TodoInput/>
-    // </>
-  )
+ return (
+   <RouterProvider router={router}/>
+ )
+
 }
 
-const readTodo =() => {
-  const todos = localStorage.getItem("todos")
-  return todos ? JSON.parse(todos) : [];
-}
+
 export default App
