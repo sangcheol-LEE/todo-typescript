@@ -1,15 +1,9 @@
 import React,{useState} from 'react'
-
+import { useNavigate } from 'react-router-dom';
+import { inputFunc,changeFunc } from '../types/video';
 const Videos = () => {
    const [text, setText] = useState<string>("");
-
-   interface inputFunc {
-      (e: React.ChangeEvent<HTMLInputElement>) : void
-   }
-
-   interface changeFunc {
-      (e:React.ChangeEvent<HTMLFormElement>) : void
-   }
+   const navigate = useNavigate();
 
    const handleChange:inputFunc = (e) => {
       setText((prev : string) => {
@@ -20,6 +14,11 @@ const Videos = () => {
 
    const handleSubmit:changeFunc = (e) => {
       e.preventDefault()
+      setText((prev) => {
+         prev = "";
+         return prev
+      })
+      navigate(`${text}`)
    }
 
   return (
